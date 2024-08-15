@@ -1,5 +1,6 @@
+ARG platform=linux/amd64
 # Use the official Go image as the base image
-FROM golang:alpine AS builder
+FROM --platform=${platform} golang:alpine AS builder
 
 # Set the current working directory inside the container
 WORKDIR /app
@@ -10,7 +11,7 @@ COPY src/* .
 # Build the Go application
 RUN go build -o main .
 
-FROM alpine:3.20.2
+FROM --platform=${platform} alpine:3.20.2
 
 WORKDIR /app
 

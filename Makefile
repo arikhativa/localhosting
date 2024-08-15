@@ -22,3 +22,8 @@ docker-stop:
 docker-push:
 	docker tag $(BINARY_NAME) $(DOCKER_USERNAME)/$(BINARY_NAME)
 	docker push $(DOCKER_USERNAME)/$(BINARY_NAME)
+
+publish:
+	docker build --build-arg platform=linux/arm64 -t $(BINARY_NAME) .
+	docker tag $(BINARY_NAME) $(DOCKER_USERNAME)/$(BINARY_NAME):arm
+	docker push $(DOCKER_USERNAME)/$(BINARY_NAME):arm
