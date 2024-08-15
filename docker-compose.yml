@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  server:
+    image: arikhativa/del-server:latest
+    ports:
+      - "8282:8080"
+
+  dns-updater:
+    image: arikhativa/dns-updater:latest
